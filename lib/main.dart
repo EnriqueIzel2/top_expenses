@@ -18,8 +18,25 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Tela Home"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Top Despesas"),
+      ),
+      body: Column(
+        children: const <Widget>[
+          SizedBox(
+            width: double.infinity,
+            child: Card(
+              color: Colors.blue,
+              elevation: 5,
+              child: Text("Gráfico"),
+            ),
+          ),
+          Card(
+            child: Text("Despesas"),
+          ),
+        ],
+      ),
     );
   }
 }
