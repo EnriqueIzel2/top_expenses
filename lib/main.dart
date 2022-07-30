@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:top_expenses/components/transactions_form.dart';
 import 'package:top_expenses/components/transactions_list.dart';
 
 import 'package:top_expenses/models/transaction.dart';
@@ -17,9 +18,6 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
-  final titleController = TextEditingController();
-  final valueController = TextEditingController();
-
   final _transactions = [
     Transaction(
       id: "t1",
@@ -55,38 +53,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             TransactionsList(transactions: _transactions),
-            Card(
-              elevation: 5,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: titleController,
-                      decoration: const InputDecoration(
-                        labelText: "Nome da despesa",
-                      ),
-                    ),
-                    TextField(
-                      controller: valueController,
-                      decoration: const InputDecoration(
-                        labelText: "Valor (R\$)",
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        print(titleController.text);
-                        print(valueController.text);
-                      },
-                      style: TextButton.styleFrom(
-                        textStyle: const TextStyle(color: Colors.purple),
-                      ),
-                      child: const Text("Nova Transação"),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            TransactionsForm(),
           ],
         ),
       ),
