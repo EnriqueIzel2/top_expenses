@@ -41,7 +41,6 @@ class HomeScreen extends StatelessWidget {
         title: const Text("Top Despesas"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const SizedBox(
