@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import 'package:top_expenses/models/transaction.dart';
 
 main() => runApp(const ExpensesApp());
@@ -86,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          transaction.date.toString(),
+                          DateFormat('d MMM y').format(transaction.date),
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
