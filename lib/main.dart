@@ -99,6 +99,26 @@ class HomeScreen extends StatelessWidget {
               );
             }).toList(),
           ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: const [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Nome da despesa",
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Valor (R\$)",
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
