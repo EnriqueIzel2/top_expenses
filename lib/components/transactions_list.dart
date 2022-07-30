@@ -6,7 +6,8 @@ import 'package:top_expenses/models/transaction.dart';
 class TransactionsList extends StatelessWidget {
   final List<Transaction> transactions;
 
-  const TransactionsList(Key? key, this.transactions) : super(key: key);
+  const TransactionsList({required this.transactions, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
