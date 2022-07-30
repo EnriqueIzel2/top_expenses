@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -19,6 +17,9 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+
   final _transactions = [
     Transaction(
       id: "t1",
@@ -108,18 +109,23 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: titleController,
+                      decoration: const InputDecoration(
                         labelText: "Nome da despesa",
                       ),
                     ),
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: valueController,
+                      decoration: const InputDecoration(
                         labelText: "Valor (R\$)",
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print(titleController.text);
+                        print(valueController.text);
+                      },
                       style: TextButton.styleFrom(
                         textStyle: const TextStyle(color: Colors.purple),
                       ),
