@@ -23,6 +23,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Top Despesas"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -38,6 +44,10 @@ class HomeScreen extends StatelessWidget {
             TransactionUser(),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
