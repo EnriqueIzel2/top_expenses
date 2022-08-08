@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:top_expenses/components/transactions_form.dart';
 import 'package:top_expenses/components/transactions_list.dart';
 import 'package:top_expenses/models/transaction.dart';
@@ -28,6 +27,30 @@ class _TransactionUserState extends State<TransactionUser> {
       value: 200.30,
       date: DateTime.now(),
     ),
+    Transaction(
+      id: "t3",
+      title: "conta de internet",
+      value: 200.30,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t4",
+      title: "conta do agiota",
+      value: 200.30,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t5",
+      title: "conta do agiota",
+      value: 200.30,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t6",
+      title: "conta do agiota",
+      value: 200.30,
+      date: DateTime.now(),
+    ),
   ];
 
   _addTransaction(String title, double value) {
@@ -47,8 +70,8 @@ class _TransactionUserState extends State<TransactionUser> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TransactionsList(transactions: _transactions),
         TransactionsForm(onSubmit: _addTransaction),
+        TransactionsList(transactions: _transactions),
       ],
     );
   }
