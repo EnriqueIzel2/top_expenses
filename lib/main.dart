@@ -78,7 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  _openTransactionsFormModal() {}
+  _openTransactionsFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) => TransactionsForm(onSubmit: _addTransaction),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Top Despesas"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => _openTransactionsFormModal(context),
             icon: const Icon(Icons.add),
           ),
         ],
@@ -103,18 +108,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text("Gráfico"),
               ),
             ),
-            Column(
-              children: [
-                TransactionsForm(onSubmit: _addTransaction),
-                TransactionsList(transactions: _transactions),
-              ],
-            ),
+            TransactionsList(transactions: _transactions),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _openTransactionsFormModal(context),
       ),
     );
   }
