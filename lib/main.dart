@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:top_expenses/components/chart.dart';
 import 'package:top_expenses/components/transactions_form.dart';
 import 'package:top_expenses/components/transactions_list.dart';
 import 'package:top_expenses/models/transaction.dart';
@@ -50,43 +51,32 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Transaction> _transactions = [
-    // Transaction(
-    //   id: "t1",
-    //   title: "novo tênis",
-    //   value: 300.10,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "t2",
-    //   title: "conta de luz",
-    //   value: 200.30,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "t3",
-    //   title: "conta de internet",
-    //   value: 200.30,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "t4",
-    //   title: "conta do agiota",
-    //   value: 200.30,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "t5",
-    //   title: "conta do agiota",
-    //   value: 200.30,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: "t6",
-    //   title: "conta do agiota",
-    //   value: 200.30,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: "t0",
+      title: "novo tênis",
+      value: 300.10,
+      date: DateTime.now().subtract(const Duration(days: 33)),
+    ),
+    Transaction(
+      id: "t1",
+      title: "conta de luz",
+      value: 200.30,
+      date: DateTime.now().subtract(const Duration(days: 4)),
+    ),
+    Transaction(
+      id: "t2",
+      title: "conta de luz novinha",
+      value: 200.30,
+      date: DateTime.now().subtract(const Duration(days: 4)),
+    ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((transaction) {
+      return transaction.date
+          .isAfter(DateTime.now().subtract(const Duration(days: 7)));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -126,13 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SizedBox(
-              child: Card(
-                color: Colors.blue,
-                elevation: 5,
-                child: Text("Gráfico"),
-              ),
-            ),
+            Chart(recentTransactions: _recentTransactions),
             TransactionsList(transactions: _transactions),
           ],
         ),
