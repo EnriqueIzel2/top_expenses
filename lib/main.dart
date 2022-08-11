@@ -49,43 +49,43 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _transactions = [
-    Transaction(
-      id: "t1",
-      title: "novo tênis",
-      value: 300.10,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t2",
-      title: "conta de luz",
-      value: 200.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t3",
-      title: "conta de internet",
-      value: 200.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t4",
-      title: "conta do agiota",
-      value: 200.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t5",
-      title: "conta do agiota",
-      value: 200.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t6",
-      title: "conta do agiota",
-      value: 200.30,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    // Transaction(
+    //   id: "t1",
+    //   title: "novo tênis",
+    //   value: 300.10,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t2",
+    //   title: "conta de luz",
+    //   value: 200.30,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t3",
+    //   title: "conta de internet",
+    //   value: 200.30,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t4",
+    //   title: "conta do agiota",
+    //   value: 200.30,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t5",
+    //   title: "conta do agiota",
+    //   value: 200.30,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t6",
+    //   title: "conta do agiota",
+    //   value: 200.30,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   _addTransaction(String title, double value) {
