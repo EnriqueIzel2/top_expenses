@@ -55,13 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
       id: "t0",
       title: "novo tênis",
       value: 300.10,
-      date: DateTime.now().subtract(const Duration(days: 33)),
+      date: DateTime.now().subtract(const Duration(days: 3)),
     ),
     Transaction(
       id: "t1",
       title: "conta de luz",
       value: 200.30,
-      date: DateTime.now().subtract(const Duration(days: 4)),
+      date: DateTime.now().subtract(const Duration(days: 2)),
     ),
     Transaction(
       id: "t2",
