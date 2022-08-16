@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:top_expenses/components/chart.dart';
 import 'package:top_expenses/components/transactions_form.dart';
@@ -16,6 +17,11 @@ class ExpensesApp extends StatelessWidget {
     final ThemeData themeData = ThemeData();
 
     return MaterialApp(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: const [Locale('pt', 'BR')],
       home: const HomeScreen(),
       theme: themeData.copyWith(
         colorScheme: themeData.colorScheme.copyWith(
