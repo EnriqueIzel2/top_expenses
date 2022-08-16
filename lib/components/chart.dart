@@ -15,7 +15,7 @@ class Chart extends StatelessWidget {
         Duration(days: index),
       );
 
-      final dayFirstLetter = DateFormat.E().format(weekDay)[0];
+      final dayFirstLetter = DateFormat('EEE', 'pt_BR').format(weekDay)[0];
       double totalSum = 0.0;
 
       for (var i = 0; i < recentTransactions.length; i++) {
@@ -43,14 +43,21 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactions.map((transaction) {
-          return ChartBar(
-            label: transaction['day'].toString(),
-            value: transaction['value'],
-            percentage: transaction['value'] / _weekTotalValue,
-          );
-        }).toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactions.map((transaction) {
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                label: transaction['day'].toString(),
+                value: transaction['value'],
+                percentage: transaction['value'] / _weekTotalValue,
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
