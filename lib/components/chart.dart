@@ -9,7 +9,7 @@ class Chart extends StatelessWidget {
 
   const Chart({Key? key, required this.recentTransactions}) : super(key: key);
 
-  List<Map<String, Object>> get groupedTransactions {
+  List<Map<String, dynamic>> get groupedTransactions {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(
         Duration(days: index),
@@ -32,9 +32,14 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get _weekTotalValue {
+    return groupedTransactions.fold(0.0, (sum, currentValue) {
+      return sum + currentValue['value'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    groupedTransactions;
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
@@ -42,8 +47,8 @@ class Chart extends StatelessWidget {
         children: groupedTransactions.map((transaction) {
           return ChartBar(
             label: transaction['day'].toString(),
-            value: double.parse(transaction['value'].toString()),
-            percentage: 0,
+            value: transaction['value'],
+            percentage: transaction['value'] / _weekTotalValue,
           );
         }).toList(),
       ),
