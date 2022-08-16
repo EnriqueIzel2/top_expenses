@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'package:top_expenses/components/chart_bar.dart';
 import 'package:top_expenses/models/transaction.dart';
 
 class Chart extends StatelessWidget {
@@ -38,8 +39,13 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: const EdgeInsets.all(20),
       child: Row(
-        // TODO implementar o widget que mostra o percentual
-        children: [],
+        children: groupedTransactions.map((transaction) {
+          return ChartBar(
+            label: transaction['day'].toString(),
+            value: double.parse(transaction['value'].toString()),
+            percentage: 0,
+          );
+        }).toList(),
       ),
     );
   }
