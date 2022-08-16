@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     Transaction(
       id: "t2",
-      title: "conta de luz novinha",
+      title: "conta de Internet",
       value: 200.30,
       date: DateTime.now().subtract(const Duration(days: 4)),
     ),
