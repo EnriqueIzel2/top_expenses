@@ -29,7 +29,7 @@ class Chart extends StatelessWidget {
       }
 
       return {'day': dayFirstLetter, 'value': totalSum};
-    });
+    }).reversed.toList();
   }
 
   double get _weekTotalValue {
