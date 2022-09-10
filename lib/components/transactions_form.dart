@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TransactionsForm extends StatefulWidget {
   final void Function(String, double) onSubmit;
@@ -10,12 +11,13 @@ class TransactionsForm extends StatefulWidget {
 }
 
 class _TransactionsFormState extends State<TransactionsForm> {
-  final titleController = TextEditingController();
-  final valueController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _valueController = TextEditingController();
+  DateTime? _selectedDate = null;
 
   _submitForm() {
-    final title = titleController.text;
-    final value = double.tryParse(valueController.text) ?? 0.0;
+    final title = _titleController.text;
+    final value = double.tryParse(_valueController.text) ?? 0.0;
 
     if (title.isEmpty || value <= 0) {
       return;
@@ -30,7 +32,12 @@ class _TransactionsFormState extends State<TransactionsForm> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2022),
       lastDate: DateTime.now(),
-    );
+      locale: const Locale("pt", "BR"),
+    ).then((pickedDate) {
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -42,14 +49,14 @@ class _TransactionsFormState extends State<TransactionsForm> {
         child: Column(
           children: [
             TextField(
-              controller: titleController,
+              controller: _titleController,
               textInputAction: TextInputAction.next,
               decoration: const InputDecoration(
                 labelText: "Nome da despesa",
               ),
             ),
             TextField(
-              controller: valueController,
+              controller: _valueController,
               keyboardType:
                   const TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => _submitForm(),
@@ -61,7 +68,13 @@ class _TransactionsFormState extends State<TransactionsForm> {
               height: 70,
               child: Row(
                 children: [
-                  const Text("Nenhuma data selecionada!"),
+                  Expanded(
+                    child: Text(
+                      _selectedDate == null
+                          ? "Nenhuma data selecionada!"
+                          : "Data selecionada: ${DateFormat("dd/MM/y").format(_selectedDate!)}",
+                    ),
+                  ),
                   TextButton(
                     onPressed: _showDatePicker,
                     child: Text(
