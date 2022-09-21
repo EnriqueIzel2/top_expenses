@@ -13,7 +13,7 @@ class TransactionsForm extends StatefulWidget {
 class _TransactionsFormState extends State<TransactionsForm> {
   final _titleController = TextEditingController();
   final _valueController = TextEditingController();
-  DateTime? _selectedDate;
+  DateTime _selectedDate = DateTime.now();
 
   _submitForm() {
     final title = _titleController.text;
@@ -23,7 +23,7 @@ class _TransactionsFormState extends State<TransactionsForm> {
       return;
     }
 
-    widget.onSubmit(title, value, _selectedDate!);
+    widget.onSubmit(title, value, _selectedDate);
   }
 
   _showDatePicker() {
@@ -35,7 +35,7 @@ class _TransactionsFormState extends State<TransactionsForm> {
       locale: const Locale("pt", "BR"),
     ).then((pickedDate) {
       setState(() {
-        _selectedDate = pickedDate;
+        _selectedDate = pickedDate!;
       });
     });
   }
