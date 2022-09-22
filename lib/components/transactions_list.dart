@@ -61,6 +61,11 @@ class TransactionsList extends StatelessWidget {
                     subtitle: Text(
                       DateFormat('d MMM y', "pt_BR").format(transaction.date),
                     ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                    ),
                   ),
                 );
               }),
