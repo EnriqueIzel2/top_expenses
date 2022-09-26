@@ -84,6 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.of(context).pop();
   }
 
+  _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((transaction) => transaction.id == id);
+    });
+  }
+
   _openTransactionsFormModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
