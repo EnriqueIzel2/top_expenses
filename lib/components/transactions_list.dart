@@ -5,8 +5,10 @@ import 'package:top_expenses/models/transaction.dart';
 
 class TransactionsList extends StatelessWidget {
   final List<Transaction> transactions;
+  final void Function(String) onRemove;
 
-  const TransactionsList({required this.transactions, Key? key})
+  const TransactionsList(
+      {required this.transactions, required this.onRemove, Key? key})
       : super(key: key);
 
   @override
