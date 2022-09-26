@@ -64,7 +64,7 @@ class TransactionsList extends StatelessWidget {
                       DateFormat('d MMM y', "pt_BR").format(transaction.date),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () => onRemove(transaction.id),
                       icon: const Icon(Icons.delete),
                       color: Theme.of(context).errorColor,
                     ),
