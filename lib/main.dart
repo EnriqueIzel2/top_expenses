@@ -114,7 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(recentTransactions: _recentTransactions),
-            TransactionsList(transactions: _transactions),
+            TransactionsList(
+              transactions: _transactions,
+              onRemove: _deleteTransaction,
+            ),
           ],
         ),
       ),
