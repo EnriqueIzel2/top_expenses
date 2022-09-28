@@ -99,6 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final availableHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Top Despesas"),
@@ -114,9 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(recentTransactions: _recentTransactions),
-            TransactionsList(
-              transactions: _transactions,
-              onRemove: _deleteTransaction,
+            Container(
+              height: availableHeight * 0.6,
+              child: TransactionsList(
+                transactions: _transactions,
+                onRemove: _deleteTransaction,
+              ),
             ),
           ],
         ),
