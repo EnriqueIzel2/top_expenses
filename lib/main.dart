@@ -99,28 +99,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final availableHeight = MediaQuery.of(context).size.height;
+    final appBar = AppBar(
+      title: const Text("Top Despesas"),
+      actions: [
+        IconButton(
+          onPressed: () => _openTransactionsFormModal(context),
+          icon: const Icon(Icons.add),
+        ),
+      ],
+    );
+
+    final availableHeight = MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Top Despesas"),
-        actions: [
-          IconButton(
-            onPressed: () => _openTransactionsFormModal(context),
-            icon: const Icon(Icons.add),
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: availableHeight * 0.4,
+              height: availableHeight * 0.3,
               child: Chart(recentTransactions: _recentTransactions),
             ),
             Container(
-              height: availableHeight * 0.6,
+              height: availableHeight * 0.7,
               child: TransactionsList(
                 transactions: _transactions,
                 onRemove: _deleteTransaction,
